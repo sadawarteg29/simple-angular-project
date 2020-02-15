@@ -2,16 +2,12 @@ language: node_js
 node_js:
     - 13
 os: linux
-
 services:
     - docker
-    
 branches:
     only:
         - master
-
 before_install:
     - docker build -t gauravsadawarte/test-simple-angular-project -f Dockerfile.dev .
-
 script:
     - docker run -e CI=true --name e2e_test_angular gauravsadawarte/test-simple-angular-project ng e2e --protractor-config='e2e/protractor.ci.conf.js'
