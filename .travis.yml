@@ -1,7 +1,9 @@
-sudo: required
+language: node_js
+os: linux
+
 services:
     - docker
-
+    
 branches:
     only:
         - master
