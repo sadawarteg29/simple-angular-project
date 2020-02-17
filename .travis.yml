@@ -11,3 +11,15 @@ before_install:
     - docker build -t gauravsadawarte/test-simple-angular-project -f Dockerfile.dev .
 script:
     - docker run -e CI=true --name e2e_test_angular gauravsadawarte/test-simple-angular-project ng e2e --protractor-config='e2e/protractor.ci.conf.js'
+deploy:
+    edge: true
+    provider: elasticbeanstalk
+    region: "us-east-2"
+    app: "Simple_Angular_Project"
+    env: "SimpleAngularProject-env"
+    bucket_name: "elasticbeanstalk-us-east-2-335237141106"
+    bucket_path: "Simple_Angular_Project"
+    on:
+        branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
