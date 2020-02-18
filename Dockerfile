@@ -8,7 +8,7 @@ COPY ./ ${ngPATH}
 RUN npm run build
 
 FROM nginx
-EXPOSE 80 443
+EXPOSE 80
 ENV nPATH /usr/share/nginx/html
 WORKDIR ${nPATH}
 RUN rm -rf ${nPATH}/*
